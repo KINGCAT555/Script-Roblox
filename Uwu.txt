@@ -1,3 +1,2 @@
-G.UserID = 2946650950
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/IlllIlIIIlllIlIlllIIlIlllIlIIlllI/EggHatch/main/Egg.txt", true))()
