@@ -2,18 +2,39 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("Xin Town Auto Farm", "DarkTheme")
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Banana Farm")
-Section:NewButton("Auto Farm No Off", "ButtonInfo", function()
+Section:NewButton("Auto Farm No Off", "yay nom", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
     while true do wait()
 game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
 task.wait(10)
 end
 end)
-Section:NewButton("Auto Package", "ButtonInfo", function()
+Section:NewButton("Auto Package", "yay nom", function()
     while true do wait(3600)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2023, 3, 2309)
 end
-    while true do wait(60)
+    while true do wait(3660)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
+end
+end)
+local Section = Tab:NewSection("Eat Food")
+Section:NewButton("Eat Water", "yay nom", function()
+while true do wait(60)
+    local args = {
+    [1] = "Eat",
+    [2] = "Water"
+}
+
+game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
+end
+end)
+Section:NewButton("Eat Pudding", "yay nom", function()
+while true do wait(60)
+    local args = {
+    [1] = "Eat",
+    [2] = "Pudding"
+}
+
+game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
 end
 end)
