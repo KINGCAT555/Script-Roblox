@@ -45,6 +45,8 @@ if AutoEquiped then
 game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(tool))
 end)
 end
+end
+end)
 
 Section:NewButton("Auto Package", "yay nom", function()
     while true do wait(3600)
