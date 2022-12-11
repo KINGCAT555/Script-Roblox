@@ -16,11 +16,12 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
-local toollist = {}
-local tool = nil
 
-for i,v in pair(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-  table.insert(toollist,v.Name)
+local Toollist = {}
+local Tool = nil
+
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+  table.insert(Toollist,v.Name)
 end
 
 local Section = Tab:NewSection("Banana Farm")
@@ -31,8 +32,8 @@ game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
 task.wait(10)
 end
 end)
-Section:NewDropdown("Select tool", "", toollist, function(currentOption)
-    tool = currentOption
+Section:NewDropdown("Select tool", "", Toollist, function(currentOption)
+    Tool = currentOption
 end)
 
 Section:NewToggle("Auto Equip", "ToggleInfo", function(a)
