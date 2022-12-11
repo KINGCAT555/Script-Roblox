@@ -1,22 +1,5 @@
-local args = {
-    [1] = "Equip",
-    [2] = "Basket"
-}
-
-game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
-
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Xin Town Auto Farm", "DarkTheme")
-
-local toollist = {}
-local tool =nill
-
-for i,v in pair(game.(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-  table.insert(toollist,v.Name)
-end
-
-
-
 local Tab = Window:NewTab("Update!!")
 local Section = Tab:NewSection("[+] Auto Farm")
 local Section = Tab:NewSection("[+] Auto Equip")
@@ -25,6 +8,21 @@ local Section = Tab:NewSection("[+] Auto Eat")
 local Section = Tab:NewSection("[+] Server Hop&Rejoin")
 local Section = Tab:NewSection("[+] Config Incoming!!..")
 local Tab = Window:NewTab("Auto Farm")
+
+
+local args = {
+    [1] = "Equip",
+    [2] = "Basket"
+}
+
+game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
+local toollist = {}
+local tool =nill
+
+for i,v in pair(game.(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+  table.insert(toollist,v.Name)
+end
+
 local Section = Tab:NewSection("Banana Farm")
 Section:NewButton("Auto Farm Banana", "yay nom", function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
