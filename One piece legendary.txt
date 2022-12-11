@@ -5,7 +5,8 @@ local Section = Tab:NewSection("      Auto Farm    ")
 
 Section:NewToggle("Auto Sam Quest", "ToggleInfo", function(Sam)
 _G.sam = Sam
-while _G.sam do wait() game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer()
+while _G.sam do wait() 
+game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer()
 end)
 
 local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
