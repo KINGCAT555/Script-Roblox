@@ -10,9 +10,10 @@ local Section = Tab:NewSection("[+] Config Incoming!!..")
 local Tab = Window:NewTab("Auto Farm")
 
 local Section = Tab:NewSection("Banana Farm")
-Section:NewButton("Auto Farm Banana", "yay nom", function()
+Section:NewToggle("Auto Farm Banana", "ToggleInfo", function(state)
+_G.AutoBanana = state
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
-    while true do wait()
+    while _G.AutoBanana do wait()
 game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
 task.wait(10)
 end
@@ -44,17 +45,19 @@ end
 end
 end)
 
-Section:NewButton("Auto Package", "yay nom", function()
-    while true do wait(3600)
+Section:NewToggle("Auto Package", "ToggleInfo", function(state)
+_G.Package = state
+    while _G.Package do wait(3600)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2023, 3, 2309)
 end
-    while true do wait(3660)
+    while _G.Package do wait(3660)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
 end
 end)
 local Section = Tab:NewSection("Eat Food")
-Section:NewButton("Eat Water", "yay nom", function()
-while true do wait(60)
+Section:NewToggle("Auto Water", "ToggleInfo", function(state)
+_G.water = state
+while _G.water do wait(60)
     local args = {
     [1] = "Eat",
     [2] = "Water"
@@ -63,8 +66,8 @@ while true do wait(60)
 game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
 end
 end)
-Section:NewButton("Eat Pudding", "yay nom", function()
-while true do wait(60)
+Section:NewToggle("Auto Pudding", "ToggleInfo", function(state)
+_G.Pudding = state
     local args = {
     [1] = "Eat",
     [2] = "Pudding"
