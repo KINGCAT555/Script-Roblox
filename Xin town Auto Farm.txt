@@ -31,7 +31,7 @@ Section:NewDropdown("Select tool", "", Toollist, function(currentOption)
     Tool = currentOption
 end)
 
-Section:NewToggle("Auto Equip", "ToggleInfo", function(a)
+Section:NewToggle("Auto Equip (Beta)", "ToggleInfo", function(a)
     AutoEquiped = a
 end)
 
