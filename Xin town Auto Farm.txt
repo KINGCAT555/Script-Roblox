@@ -9,7 +9,16 @@ local Section = Tab:NewSection("[+] Config Incoming!!..")
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Banana Farm")
 Section:NewButton("Auto Farm Banana", "yay nom", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
+    local args = {
+    [1] = "Equip",
+    [2] = "Basket"
+}
+
+game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
+Tool = "Basket"
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Tool))
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
     while true do wait()
 game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
 task.wait(10)
