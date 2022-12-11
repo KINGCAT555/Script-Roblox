@@ -60,7 +60,7 @@ _G.Package = p
     while _G.Package do wait(3600)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2023, 3, 2309)
 end
-    while true do wait(3660)
+    while _G.Package do wait(3660)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
 end
 end)
