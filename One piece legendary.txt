@@ -1,0 +1,85 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("One Piece Legendary", "DarkTheme")
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("      Auto Farm    ")
+
+Section:NewToggle("Auto Sam Quest", "ToggleInfo", function(Sam)
+_G.sam = Sam
+while _G.sam do wait() game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer()
+end)
+
+local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+
+Section:NewToggle("Auto Find Compass", "ToggleInfo", function(find)
+ _G.find = find
+while _G.find do wait()
+local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass")
+                local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass")
+                if Compass or Compass2 then
+                    local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                    Compass.Parent = game.Players.LocalPlayer.Character
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value)
+                    Compass:Activate()
+                    wait(1)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton)
+                end
+end
+end)
+
+local Cache = {
+    GlobalValue = {
+        ListAllDevilFurits = loadstring(game:HttpGet("https://raw.githubusercontent.com/KangKung01/KangWinnerB/main/OPL/DevilFurit_Name.lua"))(),
+        ListAllBox = {"Common Box", "Uncommon Box", "Rare Box", "Ultra Rare Box"},
+        ListMods = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/KangKung01/KangWinnerB/main/OPL/ModsList.json"))
+
+Section:NewToggle("Auto Unbox", "ToggleInfo", function(unbox)
+_G.unbox = unbox
+while _G.unbox do wait()
+                for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if table.find(Cache.GlobalValue.ListAllBox, Value.Name) then
+                        game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                        Value.Parent = game.Players.LocalPlayer.Character
+                        Value:Activate()
+                    end
+                end
+end
+end
+end)
+
+local Tab = Window:NewTab("Juice")
+local Section = Tab:NewSection("     Auto Juice&Drink    ")
+
+Section:NewToggle("Auto Juice", "ToggleInfo", function(juice)
+_G.juice = juice
+while _G.juice do wait()
+                for _, v in pairs(game:GetService("Workspace").Barrels.Barrels:GetChildren()) do
+                    if v:FindFirstChild("ClickDetector") then
+                        fireclickdetector(v.ClickDetector)
+                    end
+                    wait(0.1)
+                    for _, v in pairs(game:GetService("Workspace").Island8.Kitchen:GetChildren()) do
+                        if v.Name == "Folder" and v:FindFirstChild("JuicingBowl") then
+                            fireclickdetector(v.JuicingBowl.Bowl.ClickDetector)
+                        end
+                    end              
+end
+end
+end)
+
+
+Section:NewToggle("Auto Drink", "ToggleInfo", function(drink)
+_G.Drink = drink
+while _G.Drink do wait()
+local Drinks = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"}
+                for _, v1 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    for _, v2 in pairs(Drinks) do
+                        if string.match(v1.Name, v2) then
+                            game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                            v1.Parent = game.Players.LocalPlayer.Character
+                            v1:Activate()
+                        end
+                    end
+                end
+end
+end)
