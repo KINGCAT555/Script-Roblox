@@ -19,7 +19,7 @@ game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
 local toollist = {}
 local tool = nil
 
-for i,v in pair(game.(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+for i,v in pair(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
   table.insert(toollist,v.Name)
 end
 
