@@ -1,0 +1,11 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Xin Town Auto Farm", "DarkTheme")
+local Tab = Window:NewTab("Auto Farm")
+local Section = Tab:NewSection("Banana Farm")
+Section:NewButton("Auto Farm No Off", "ButtonInfo", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
+    while true do wait()
+game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
+task.wait(10)
+end
+end)
