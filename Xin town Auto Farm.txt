@@ -9,6 +9,15 @@ local Section = Tab:NewSection("[+] Server Hop&Rejoin")
 local Section = Tab:NewSection("[+] Config Incoming!!..")
 local Tab = Window:NewTab("Auto Farm")
 
+local Section = Tab:NewSection("Banana Farm")
+Section:NewButton("Auto Farm Banana", "yay nom", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
+    while true do wait()
+game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
+task.wait(10)
+end
+end)
+
 
 local args = {
     [1] = "Equip",
@@ -24,14 +33,6 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
   table.insert(Toollist,v.Name)
 end
 
-local Section = Tab:NewSection("Banana Farm")
-Section:NewButton("Auto Farm Banana", "yay nom", function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
-    while true do wait()
-game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
-task.wait(10)
-end
-end)
 Section:NewDropdown("Select tool", "", Toollist, function(currentOption)
     Tool = currentOption
 end)
@@ -43,6 +44,7 @@ end)
 spawn(function()
 while wait() do
 if AutoEquiped then
+pcall(function()
 game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(tool))
 end)
 end
