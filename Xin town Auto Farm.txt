@@ -67,7 +67,7 @@ end)
 local Section = Tab:NewSection("Eat Food")
 Section:NewToggle("Auto Water", "ToggleInfo", function(w)
 _G.water = w
-while _G.water do wait(60)
+while _G.water do wait(120)
     local args = {
     [1] = "Eat",
     [2] = "Water"
@@ -78,7 +78,7 @@ end
 end)
 Section:NewToggle("Auto Pudding", "ToggleInfo", function(u)
 _G.Pudding = u
-while _G.Pudding do wait(60)
+while _G.Pudding do wait(120)
     local args = {
     [1] = "Eat",
     [2] = "Pudding"
