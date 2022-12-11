@@ -10,14 +10,7 @@ local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Banana Farm")
 Section:NewToggle("Auto Farm Banana", "ToggleInfo", function(state)
     if state then
-       _G.AutoFarm = true game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
-    while _G.AutoFarm do wait()
-game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
-task.wait(10)
-end
-end)
-    else
-        _G.AutoFarm = false
+       _G.AutoFarm = v 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2593, 3, 2367)
     while _G.AutoFarm do wait()
 game:GetService("VirtualInputManager"):SendKeyEvent(true,"E",false,game)
@@ -25,7 +18,6 @@ task.wait(10)
 end
 end)
     end
-end)
 Section:NewButton("Auto Package", "yay nom", function()
     while true do wait(3600)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2023, 3, 2309)
