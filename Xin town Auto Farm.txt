@@ -45,6 +45,16 @@ end
 end
 end)
 
+Section:NewButton("Get Basket", "", function()
+    local args = {
+    [1] = "Equip",
+    [2] = "Basket"
+}
+
+game:GetService("ReplicatedStorage").Remote.RemoteEvent:FireServer(unpack(args))
+
+end)
+
 Section:NewToggle("Auto Package", "ToggleInfo", function(p)
 _G.Package = p
     while _G.Package do wait(3600)
