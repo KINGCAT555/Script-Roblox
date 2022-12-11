@@ -28,25 +28,6 @@ local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass")
 end
 end)
 
-local Cache = {
-    GlobalValue = {
-        ListAllDevilFurits = loadstring(game:HttpGet("https://raw.githubusercontent.com/KangKung01/KangWinnerB/main/OPL/DevilFurit_Name.lua"))(),
-        ListAllBox = {"Common Box", "Uncommon Box", "Rare Box", "Ultra Rare Box"},
-        ListMods = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/KangKung01/KangWinnerB/main/OPL/ModsList.json"))
-
-Section:NewToggle("Auto Unbox", "ToggleInfo", function(unbox)
-_G.unbox = unbox
-while _G.unbox do wait()
-                for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if table.find(Cache.GlobalValue.ListAllBox, Value.Name) then
-                        game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-                        Value.Parent = game.Players.LocalPlayer.Character
-                        Value:Activate()
-                    end
-                end
-end
-end
-end)
 
 local Tab = Window:NewTab("Juice")
 local Section = Tab:NewSection("     Auto Juice&Drink    ")
