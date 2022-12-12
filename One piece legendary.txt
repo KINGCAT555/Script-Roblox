@@ -49,20 +49,3 @@ while _G.juice do wait()
 end
 end
 end)
-
-
-Section:NewToggle("Auto Drink", "ToggleInfo", function(d)
-_G.Drink = d
-while _G.Drink do wait()
-local Drinks = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"}
-                for _, v1 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    for _, v2 in pairs(Drinks) do
-                        if string.match(v1.Name, v2) then
-                            game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-                            v1.Parent = game.Players.LocalPlayer.Character
-                            v1:Activate()
-                        end
-                    end
-                end
-end
-end)
