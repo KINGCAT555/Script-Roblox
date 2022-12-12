@@ -13,8 +13,9 @@ local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 
 Section:NewToggle("Auto Find Compass", "ToggleInfo", function(f)
  _G.find = f
-while _G.find do wait()
+local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 
+while _G.find do wait()
 local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass")
                 local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass")
                 if Compass or Compass2 then
