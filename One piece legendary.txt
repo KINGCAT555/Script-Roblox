@@ -9,7 +9,6 @@ while _G.sam do wait()
 game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer()
 end)
 
-local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 
 Section:NewToggle("Auto Find Compass", "ToggleInfo", function(f)
  _G.find = f
