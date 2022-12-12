@@ -25,12 +25,12 @@ local Section = Tab:NewSection("Auto Juice&Drink")
 Section:NewToggle("Auto Juice", "ToggleInfo", function(j)
 _G.juice = j
 while _G.juice do wait()
-                for _, v in pairs(game:GetService("Workspace").Barrels.Barrels:GetChildren()) do
+                for i,v in pairs(game:GetService("Workspace").Barrels.Barrels:GetChildren()) do
                     if v:FindFirstChild("ClickDetector") then
                         fireclickdetector(v.ClickDetector)
                     end
                     wait(0.1)
-                    for _, v in pairs(game:GetService("Workspace").Island8.Kitchen:GetChildren()) do
+                    for i,v in pairs(game:GetService("Workspace").Island8.Kitchen:GetChildren()) do
                         if v.Name == "Folder" and v:FindFirstChild("JuicingBowl") then
                             fireclickdetector(v.JuicingBowl.Bowl.ClickDetector)
                         end
