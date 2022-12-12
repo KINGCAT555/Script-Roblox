@@ -12,20 +12,9 @@ end)
 
 Section:NewToggle("Auto Find Compass", "ToggleInfo", function(f)
  _G.find = f
-local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-
 while _G.find do wait()
 local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass")
-                local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass")
-                if Compass or Compass2 then
-                    local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-                    Compass.Parent = game.Players.LocalPlayer.Character
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value)
-                    Compass:Activate()
-                    wait(1)
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton)
-                end
+local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass")
 end
 end)
 
