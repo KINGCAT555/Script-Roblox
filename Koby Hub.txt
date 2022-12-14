@@ -98,7 +98,9 @@ end)
 Section:NewToggle("Bring Player", "ToggleInfo", function(bring)
 _G.Bring = bring
 while _G.Bring do wait()
-PlayerTP.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 2) + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector
+
+game.Workspace.CurrentCamera.CameraSubject = PlayerTP.Character.Humanoid
+
 end
 end)
 
