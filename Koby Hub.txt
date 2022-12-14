@@ -95,14 +95,23 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
+table.insert(cors,coroutine.create(function()
+wait()
+runDummyScript(function()
+ 
+cam = game.Workspace.CurrentCamera
+PlayerTP = game.Players:GetPlayerFromCharacter(cam.CameraSubject.Parent).Name
+		end)
+		pcall(function() cam.CameraSubject = game.Players.LocalPlayer.Character.Humanoid end)
+
 Section:NewToggle("Bring Player", "ToggleInfo", function(bring)
 _G.Bring = bring
 while _G.Bring do wait()
 
-game.Workspace.CurrentCamera.CameraSubject = PlayerTP.Character.Humanoid
-else
-game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
-end
+game.Players:GetPlayerFromCharacter(cam.CameraSubject.Parent).Name
+		end)
+		pcall(function() cam.CameraSubject = game.Players.LocalPlayer.Character.Humanoid 
+end)
 end)
 
 local Tab = Window:NewTab("Misc")
