@@ -100,7 +100,8 @@ _G.Bring = bring
 while _G.Bring do wait()
 
 game.Workspace.CurrentCamera.CameraSubject = PlayerTP.Character.Humanoid
-
+else
+game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
 end
 end)
 
