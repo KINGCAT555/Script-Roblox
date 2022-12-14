@@ -99,6 +99,7 @@ Section:NewToggle("Bring Player", "ToggleInfo", function(bring)
 _G.Bring = bring
 while _G.Bring do wait()
 
+end
 end)
 
 local Tab = Window:NewTab("Misc")
