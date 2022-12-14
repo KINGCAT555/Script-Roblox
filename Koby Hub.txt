@@ -1,0 +1,135 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Auto Farm Beri", "DarkTheme")
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Auto Stats")
+
+AutoStats = {}
+
+Section:NewToggle("Auto Stats", "ToggleInfo", function(aust)
+_G.AutoStats = aust
+while _G.AutoStats do wait()
+pcall(function()
+
+end)
+end
+end)
+
+local Section = Tab:NewSection("Auto Sam")
+Section:NewToggle("Auto Sam", "ToggleInfo", function(sam)
+_G.Sam = sam
+while _G.Sam do wait()
+local args = {
+    [1] = "Claim1"
+}
+
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer(unpack(args))
+end
+end)
+Section:NewToggle("Auto Find Compass", "ToggleInfo", function(com)
+_G.Find = com
+while _G.Find do wait()
+local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass")
+                local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass")
+                if Compass or Compass2 then
+                    local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                    Compass.Parent = game.Players.LocalPlayer.Character
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value)
+                    Compass:Activate()
+                    wait(1)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton)
+end
+end
+end)
+local Section = Tab:NewSection("Auto Farm Money")
+Section:NewButton("Safe Island", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(100000, 3500, 80000))
+    local Base = Instance.new("Part", game.Workspace)
+    Base.Size = Vector3.new(50, 1, 50)
+    Base.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -3, 0)
+    Base.Anchored = true
+end)
+
+Section:NewToggle("Auto Tp", "ToggleInfo", function(tp)
+    _G.autotp = tp
+while _G.autotp do wait()
+pcall(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(100000, 3500, 80000))
+end)
+ end
+end)
+
+Section:NewToggle("Auto Spawn", "ToggleInfo", function(sw)
+    _G.spawn = sw
+while _G.spawn do wait(15)
+local args = {
+    [1] = game:GetService("Players").LocalPlayer
+}
+
+game:GetService("Players").LocalPlayer.Character.CamScript.ClientServerClient:FireServer(unpack(args))
+end
+end)
+local Tab = Window:NewTab("Player")
+
+local Section = Tab:NewSection("Teleport to Player")
+
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+ table.insert(Plr,v.Name)
+
+end
+
+local drop = Section:NewDropdown("Select Player!!", "", Plr, function(t)
+    PlayerTP = t
+end)
+
+Section:NewButton("Refresh Player", "", function()
+    drop:Refresh(Plr)
+end)
+
+Section:NewToggle("Auto Tp", "ToggleInfo", function(pr)
+_G.plr = pr
+while _G.plr do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+
+end
+end)
+
+local Tab = Window:NewTab("Misc")
+
+local Section = Tab:NewSection("Hitbox")
+Section:NewTextBox("Hitbox Size", "TextboxInfo", function(Hitbox)
+	_G.Size = Hitbox
+end)
+
+Section:NewToggle("Hitbox", "", function(ht)
+_G.Hitbox = true
+pcall(function()
+for i,v in next, (game:GetService("Players"):GetPlayers()) do
+if v.Name ~= game:GetService("Players").LocalPlayer.Name then
+v.Charactor.HumanoidRootPart.Size = Vector.new(_G.Size,_G.Size,_G.Size)
+v.Charactor.HumanoidRootPart.Transparency = 0.5
+end
+end
+end)
+end
+end)
+
+local Section = Tab:NewSection("Anti AFK")
+Section:NewToggle("Anti AFK", "ToggleInfo", function(afk)
+_G.AntiA = afk
+while _G.AntiA do wait()
+pcall(function()
+game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+        wait()
+        game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)   
+end) 
+    end
+end)
+
+local Tab = Window:NewTab("Setting")
+local Section = Tab:NewSection("Toggle Ui")
+
+Section:NewKeybind("Keybind Ui", "KeybindInfo", Enum.KeyCode.P, function()
+	Library:ToggleUI()
+end)
