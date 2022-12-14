@@ -95,6 +95,13 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
+Section:NewToggle("Bring Player", "ToggleInfo", function(bring)
+_G.Bring = bring
+while _G.Bring do wait()
+PlayerTP.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 2) + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector
+end
+end)
+
 local Tab = Window:NewTab("Misc")
 
 local Section = Tab:NewSection("Hitbox")
