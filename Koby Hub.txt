@@ -10,8 +10,7 @@ _G.AutoStats = aust
 while _G.AutoStats do wait()
 pcall(function()
 
-end
-end
+
 end)
 end
 end)
