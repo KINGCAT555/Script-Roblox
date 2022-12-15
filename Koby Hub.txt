@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("KoBy Hub", "DarkTheme")
+local Window = Library.CreateLib("Auto Farm Beri", "DarkTheme")
 local Tab = Window:NewTab("Main")
 local Section = Tab:NewSection("Auto Stats")
 
@@ -9,7 +9,11 @@ Section:NewToggle("Auto Stats", "ToggleInfo", function(aust)
 _G.AutoStats = aust
 while _G.AutoStats do wait()
 pcall(function()
-
+for i,v in next, (game:GetService("Players"):GetPlayer()) do
+if v.Name ~= game:GetService("Players").LocalPlayer.Name then
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.Size,_G.Size,_G.Size)
+end
+end
 end)
 end
 end)
@@ -95,7 +99,6 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-
 local Tab = Window:NewTab("Misc")
 
 local Section = Tab:NewSection("Hitbox")
@@ -103,16 +106,20 @@ Section:NewTextBox("Hitbox Size", "TextboxInfo", function(Hitbox)
 	_G.Size = Hitbox
 end)
 
-Section:NewButton("Hitbox", "", function()
-game:GetService('RunService').RenderStepped:connect(function()
- for i,v in next, game:GetService('Players'):GetPlayers() do
-  if v.Name ~= game:GetService('Players').LocalPlayer.Name then
-   v.Character.HumanoidRootPart.Size = Vector3.new(_G.Size,_G.Size,_G.Size)
-   v.Character.HumanoidRootPart.Transparency = 0.8
-   v.Character.HumanoidRootPart.CanCollide = false
-  end
- end
+Section:NewToggle("Hitbox", "", function(ht)
+_G.Hitbox = ht
+pcall(function()
+for i,v in next, (game:GetService("Players"):GetPlayers()) do
+if v.Name ~= game:GetService("Players").LocalPlayer.Name then
+v.Charactor.HumanoidRootPart.Size = Vector.new(_G.Size,_G.Size,_G.Size)
+end
+end
 end)
+end
+end)
+
+Section:NewButton("SeaStone Ceatus <Need Max Melee>", "ButtonInfo", function()
+game.Workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee:FireServer("Seastone Cestus")
 end)
 
 local Section = Tab:NewSection("Anti AFK")
