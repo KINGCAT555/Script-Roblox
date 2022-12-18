@@ -3320,15 +3320,15 @@ end
 
 _G.Color = Color3.fromRGB(255,0,0) 
 
-local Star = nill:Window("kuy kuy kuy")
+local Star = nill:Window("Limula Hub")
 
-local StarServer = Star:Server("fuck you",8521503225)
+local StarServer = Star:Server("Limula Kaitun",8521503225)
 
 
 
 local Main = StarServer:Channel("Main")
 
-Main:Label("Label")
+Main:Label("Kaitan")
 
 
 
@@ -4231,3 +4231,72 @@ spawn(function()
     end
 end)
 
+local Main = StarServer:Channel("Auto Stats")
+
+Main:Label("AutoStats")
+
+
+
+Main:Toggle("Melee ", _G.Automelee, function(ml)
+_G.Automelee = ml
+while _G.Automelee do wait()
+pcall(function()
+local args = {
+    [1] = "AddPoint",
+    [2] = "Melee",
+    [3] = 1
+}
+
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+
+end)
+end
+end)
+
+Main:Toggle("Defense ", _G.Autodefense, function(df)
+_G.Autodefense = df
+while _G.Automelee do wait()
+pcall(function()
+local args = {
+    [1] = "AddPoint",
+    [2] = "Denfense",
+    [3] = 1
+}
+
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+
+end)
+end
+end)
+
+Main:Toggle("Gun ", _G.Autogun, function(gn)
+_G.Autogun = gn
+while _G.Automelee do wait()
+pcall(function()
+local args = {
+    [1] = "AddPoint",
+    [2] = "Gun",
+    [3] = 1
+}
+
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+
+end)
+end
+end)
+
+Main:Toggle("Melee ", _G.Automelee, function(ml)
+_G.Automelee = ml
+while _G.Automelee do wait()
+pcall(function()
+local args = {
+    [1] = "AddPoint",
+    [2] = "Demon Fruit",
+    [3] = 1
+}
+
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+
+end)
+end
+end)
