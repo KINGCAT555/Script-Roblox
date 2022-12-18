@@ -3328,7 +3328,7 @@ local StarServer = Star:Server("Limula Kaitun",8521503225)
 
 local Main = StarServer:Channel("Main")
 
-Main:Label("Kaitan")
+Main:Label("Auto Farm")
 
 
 
@@ -4231,14 +4231,7 @@ spawn(function()
     end
 end)
 
-local Main = StarServer:Channel("Auto Stats")
-
-Main:Label("AutoStats")
-
-
-
-Main:Toggle("Melee ", _G.Automelee, function(ml)
-_G.Automelee = ml
+_G.Automelee = true
 while _G.Automelee do wait()
 pcall(function()
 local args = {
@@ -4251,10 +4244,8 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 
 end)
 end
-end)
 
-Main:Toggle("Defense ", _G.Autodefense, function(df)
-_G.Autodefense = df
+_G.Autodefense = true
 while _G.Autodefense do wait()
 pcall(function()
 local args = {
@@ -4267,36 +4258,3 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 
 end)
 end
-end)
-
-Main:Toggle("Gun ", _G.Autogun, function(gn)
-_G.Autogun = gn
-while _G.Autogun do wait()
-pcall(function()
-local args = {
-    [1] = "AddPoint",
-    [2] = "Gun",
-    [3] = 1
-}
-
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-
-end)
-end
-end)
-
-Main:Toggle("Demon Fruit ", _G.AutoDemon, function(dv)
-_G.AutoDemon = dv
-while _G.AutoDemon do wait()
-pcall(function()
-local args = {
-    [1] = "AddPoint",
-    [2] = "Demon Fruit",
-    [3] = 1
-}
-
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-
-end)
-end
-end)
