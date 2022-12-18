@@ -4255,11 +4255,11 @@ end)
 
 Main:Toggle("Defense ", _G.Autodefense, function(df)
 _G.Autodefense = df
-while _G.Automelee do wait()
+while _G.Autodefense do wait()
 pcall(function()
 local args = {
     [1] = "AddPoint",
-    [2] = "Denfense",
+    [2] = "Defense",
     [3] = 1
 }
 
@@ -4271,7 +4271,7 @@ end)
 
 Main:Toggle("Gun ", _G.Autogun, function(gn)
 _G.Autogun = gn
-while _G.Automelee do wait()
+while _G.Autogun do wait()
 pcall(function()
 local args = {
     [1] = "AddPoint",
@@ -4285,9 +4285,9 @@ end)
 end
 end)
 
-Main:Toggle("Melee ", _G.Automelee, function(ml)
-_G.Automelee = ml
-while _G.Automelee do wait()
+Main:Toggle("Demon Fruit ", _G.AutoDemon, function(dv)
+_G.AutoDemon = dv
+while _G.AutoDemon do wait()
 pcall(function()
 local args = {
     [1] = "AddPoint",
