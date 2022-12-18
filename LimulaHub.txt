@@ -3322,7 +3322,7 @@ _G.Color = Color3.fromRGB(255,0,0)
 
 local Star = nill:Window("Limula Hub")
 
-local StarServer = Star:Server("Limula Kaitun",8521503225)
+local StarServer = Star:Server("Limula Script",8521503225)
 
 
 
@@ -4285,7 +4285,6 @@ spawn(function()
 end)
 
 
-_G.Automelee = true
 while _G.Automelee do wait()
 pcall(function()
 local args = {
@@ -4299,7 +4298,6 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
 end
 
-_G.Autodefense = true
 while _G.Autodefense do wait()
 pcall(function()
 local args = {
