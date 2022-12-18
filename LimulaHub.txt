@@ -3336,6 +3336,10 @@ Main:Toggle("AutoFarm ", _G.AutoFarm, function(vu)
 _G.AutoFarm = vu
 end)
 
+Main:Toggle("New World ", _G.AutoSea2, function(vu)
+_G.AutoSea2 = vu
+end)
+
 Wapon = {}
 for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
     if v:IsA("Tool") then
@@ -4230,6 +4234,56 @@ spawn(function()
         end
     end
 end)
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.AutoSea2 and _G.SWeapon then
+                while task.wait() do
+                    if _G.AutoSea2 then
+                        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress").UsedKey == false then
+                            if not game.Players.LocalPlayer.Backpack:FindFirstChild("Key") or game.Players.LocalPlayer.Character:FindFirstChild("Key") then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress","Detective")
+                            end
+                            if game.Players.LocalPlayer.Backpack:FindFirstChild("Key") or game.Players.LocalPlayer.Character:FindFirstChild("Key") then
+                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack["Key"])
+                                Tween(CFrame.new(1349.697265625, 37.34928512573242, -1328.8309326171875))
+                                game:GetService("Workspace").Map.Ice.Door.Size = Vector3.new(30,30,30)
+                            end
+                        end
+                        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress").UsedKey == true and game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress").KilledIceBoss == false then
+                            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                if v.Name == "Ice Admiral [Lv. 700] [Boss]" then
+                                    if v:FindFirstChild("HumanoidRootPart") then
+                                        repeat task.wait()
+                                            EquipTool(_G.SWeapon)
+                                            Tween(v.HumanoidRootPart.CFrame * CFrame.new(0,35,25))
+                                        until not _G.AutoSea2
+                                    end
+                                end
+                            end
+                            for x,y in pairs(game.ReplicatedStorage:GetChildren()) do
+                                if y.Name == "Ice Admiral [Lv. 700] [Boss]" then
+                                    if y:FindFirstChild("HumanoidRootPart") then
+                                        repeat task.wait()
+                                            Tween(y.HumanoidRootPart.CFrame * CFrame.new(0,35,25))
+                                        until not _G.AutoSea2
+                                    end
+                                end
+                            end
+                        end
+                        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress").KilledIceBoss == true then
+                            if game.PlaceId == 2753915549 then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
 
 _G.Automelee = true
 while _G.Automelee do wait()
