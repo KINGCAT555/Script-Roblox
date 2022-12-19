@@ -39,6 +39,14 @@ local drop = Tab:AddDropdown({
 		_G.SWeapon = wp
 	end    
 })
+
+Tab:AddButton({
+	Name = "Refresh Weapons",
+	Callback = function()
+      		Dropdown:Refresh(Weapons<Wapon>,true)
+  	end    
+})
+
 function CheckQuest()
     local Id = game.PlaceId
     local Level = game:GetService("Players").LocalPlayer.Data.Level.Value
