@@ -43,7 +43,7 @@ local drop = Tab:AddDropdown({
 Tab:AddButton({
 	Name = "Refresh Weapons",
 	Callback = function()
-      		Dropdown:Refresh(Weapons<Wapon>,true)
+      		Dropdown:Refresh(List<Wapon>,true)
   	end    
 })
 
@@ -697,36 +697,34 @@ end)
         end
     end)
 
-local CameraShaker = require(game.ReplicatedStorage.Util.CameraShaker)
-for i,v in pairs(getreg()) do
-if typeof(v) == "function" and getfenv(v).script == game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework then
-for x,w in pairs(debug.getupvalues(v)) do
-     if typeof(w) == "table" then
-        task.spawn(function() 
-            game:GetService("RunService").RenderStepped:Connect(function()
-                if _G.F then
-                    pcall(function()
-                        if game.Players.LocalPlayer.Character:FindFirstChild("Combat") or game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") or game.Players.LocalPlayer.Character:FindFirstChild("Electro") or game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate") or game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw") or game.Players.LocalPlayer.Character:FindFirstChild("Superhuman") or game.Players.LocalPlayer.Character:FindFirstChild("Sharkman Karate") then
-                            w.activeController.increment = 3
-                        else
-                            w.activeController.increment = 4
-                        end             
-                        CameraShaker:Stop()
-                        w.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
-                        w.activeController.attacking = false
-                        w.activeController.timeToNextBlock = 0
-                        w.activeController.blocking = false                            
-                        w.activeController.hitboxMagnitude = 50
-                        w.activeController.humanoid.AutoRotate = true
-                          w.activeController.focusStart = 0
-                    end)
-                end
-            end)
-        end)
-    end
-end
-end
-end
+spawn(function()
+   game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        if _G.FastAttack then
+            local Combat = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+            local Cemara = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
+            Cemara.CameraShakeInstance.CameraShakeState = {FadingIn = 3, FadingOut = 2, Sustained = 0, Inactive = 1}
+            Combat.activeController.timeToNextAttack = 0
+            Combat.activeController.hitboxMagnitude = 120
+            Combat.activeController.increment = 3
+        end
+    end)
+end) 
+end)
+ 
+ 
+spawn(function()
+   game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        if _G.FastAttack then
+            game:GetService'VirtualUser':CaptureController()
+            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+        end
+    end)
+end) 
+end)
+
+
 
 spawn(function()
     while task.wait() do
@@ -790,29 +788,3 @@ spawn(function()
     end
 end)
 
-spawn(function()
-   game:GetService("RunService").RenderStepped:Connect(function()
-    pcall(function()
-        if _G.FastAttack then
-            local Combat = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-            local Cemara = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
-            Cemara.CameraShakeInstance.CameraShakeState = {FadingIn = 3, FadingOut = 2, Sustained = 0, Inactive = 1}
-            Combat.activeController.timeToNextAttack = 0
-            Combat.activeController.hitboxMagnitude = 120
-            Combat.activeController.increment = 3
-        end
-    end)
-end) 
-end)
- 
- 
-spawn(function()
-   game:GetService("RunService").RenderStepped:Connect(function()
-    pcall(function()
-        if _G.FastAttack then
-            game:GetService'VirtualUser':CaptureController()
-            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-        end
-    end)
-end) 
-end)
