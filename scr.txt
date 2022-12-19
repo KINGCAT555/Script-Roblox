@@ -43,7 +43,7 @@ local drop = Tab:AddDropdown({
 Tab:AddButton({
 	Name = "Refresh Weapons",
 	Callback = function()
-      		Wapon:Refresh(List<Wapon>,true)
+      		Wapon:Refresh(List<table>,true)
   	end    
 })
 
