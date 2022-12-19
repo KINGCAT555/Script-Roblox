@@ -10,7 +10,7 @@ local Section = Tab:AddSection({
 })
 Tab:AddToggle({
 	Name = "Auto Farm Levels",
-	Default = false,
+	Default = _G.AutoFarm,
 	Callback = function(af)
 		_G.AutoFarm = af
 	end    
@@ -25,8 +25,8 @@ end
 
 local drop = Tab:AddDropdown({
 	Name = "Select Weapons",
-	Default = "1",
-	Options = {Wapon},
+	Default = "Wapon",
+	Options = Wapon,
 	Callback = function(wp)
 		_G.SWeapon = wp
 	end    
