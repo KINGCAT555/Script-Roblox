@@ -16,6 +16,14 @@ Tab:AddToggle({
 	end    
 })
 
+Tab:AddToggle({
+	Name = "Fast Attack",
+	Default = _G.FastAttack,
+	Callback = function(fa)
+		_G.FastAttack = fa
+	end    
+})
+
 Wapon = {}
 for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
     if v:IsA("Tool") then
@@ -682,30 +690,31 @@ end)
     end)
 _G.F = true
 
-local plr = game.Players.LocalPlayer
-
-local CbFw = debug.getupvalues(require(plr.PlayerScripts.CombatFramework))
-local CbFw2 = CbFw[2]
-
-function GetCurrentBlade() 
-local p13 = CbFw2.activeController
-local ret = p13.blades[1]
-if not ret then return end
-while ret.Parent~=game.Players.LocalPlayer.Character do ret=ret.Parent end
-return ret
-end
-
-require(game.ReplicatedStorage.Util.CameraShaker):Stop()
 spawn(function()
-while task.wait() do
-pcall(function()
-  if UseFast then
-      if _G.F then
-        AttackNoCD() 
-      end
-  end
+   game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        if _G.FastAttack then
+            local Combat = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+            local Cemara = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
+            Cemara.CameraShakeInstance.CameraShakeState = {FadingIn = 3, FadingOut = 2, Sustained = 0, Inactive = 1}
+            Combat.activeController.timeToNextAttack = 0
+            Combat.activeController.hitboxMagnitude = 120
+            Combat.activeController.increment = 3
+        end
+    end)
+end) 
 end)
-end
+ 
+ 
+spawn(function()
+   game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        if _G.FastAttack then
+            game:GetService'VirtualUser':CaptureController()
+            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+        end
+    end)
+end) 
 end)
 
 local CameraShaker = require(game.ReplicatedStorage.Util.CameraShaker)
