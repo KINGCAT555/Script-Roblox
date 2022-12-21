@@ -24,13 +24,7 @@ Tab:AddToggle({
 	end    
 })
 
-Tab:AddToggle({
-	Name = "Fast Attack2",
-	Default = _G.FastAttack2,
-	Callback = function(fa2)
-		_G.FastAttack2 = fa2
-	end    
-})
+
 
 Wapon = {}
 for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
@@ -818,19 +812,3 @@ spawn(function()
         end
     end
 end)
-
-local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
-Camera:Stop()
-coroutine.wrap(function()
-    game:GetService("RunService").Stepped:Connect(function()
-pcall(function()
-if _G.FastAttack2 then
-        if getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack then
-            getupvalues(CombatFramework)[2]['activeController'].timeToNextAttack = 0
-            getupvalues(CombatFramework)[2]['activeController'].hitboxMagnitude = 25
-            getupvalues(CombatFramework)[2]['activeController']:attack()
-        end
-    end)
-end)
-end)()
