@@ -734,8 +734,6 @@ for x,w in pairs(debug.getupvalues(v)) do
                             w.activeController.increment = 4
                         end             
                         CameraShaker:Stop()
-                        w.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
-                        w.activeController.attacking = false
                         w.activeController.timeToNextBlock = 0
                         w.activeController.blocking = false                            
                         w.activeController.hitboxMagnitude = 50
