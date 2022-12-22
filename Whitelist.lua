@@ -15,6 +15,6 @@ game.Players.LocalPlayer:Kick("ไปซื้อ Key สิไอควาย |
     end
 setclipboard("**Hwid** : "..ClientId)
   else
-game.Players.LocalPlayer:Kick("ไปแจ้ง Hwid กับแอดมิน | Plss Change Hwid with Admin")
+print("ไปแจ้ง Hwid กับแอดมิน | Plss Change Hwid with Admin")
 end
 
